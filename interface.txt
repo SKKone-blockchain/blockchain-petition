@@ -1,0 +1,68 @@
+Smart Contract Admin
+
+{
+    address : {
+        isKorean: Boolean  # 계정 삭제 여부
+        cancellationReason: String # 사망, 이민, ...
+    }, 
+    ...
+}
+
+Smart Contract Main
+
+int idx
+
+{
+    petitionID: {
+        title : String,
+        content : String
+        tag : String[]
+        vote : int
+    }, # array하던지 map하던지 ㅁㄴㅇㄹㅁㄴㅇㄹㄴㅁㅇㄹ
+}
+
+{
+    address : [petitionID (int), ...],
+    ...
+}
+
+
+
+View Petitions
+
+getPetitionsList(startIndex, endIndex){
+    return {
+        title: String,
+        vote: int
+    }
+} # 1, 2, 3 ... page
+
+getPetition(petitionID){
+    return {
+        title : String,
+        content : String
+        tag : String[]
+        vote : int
+    }
+}
+
+
+---------------
+
+Authorize User
+
+register(){
+    # register user
+}
+
+unregister(String cancellationReason){
+    
+}
+
+Upload Petition
+
+writePetition(
+    String title,
+    String content,
+    String[] tag
+    )
