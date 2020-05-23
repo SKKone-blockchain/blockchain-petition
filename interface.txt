@@ -31,10 +31,12 @@ int idx
 View Petitions
 
 getPetitionsList(startIndex, endIndex){
-    return {
-        title: String,
-        vote: int
-    }
+    return [{
+            title: String,
+            vote: int
+        },
+        ...
+    ]
 } # 1, 2, 3 ... page
 
 getPetition(petitionID){
