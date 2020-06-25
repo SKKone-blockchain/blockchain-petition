@@ -25,7 +25,6 @@ contract Petition{
     mapping(bytes32=>bool) votecheck;  // 해당 청원에 vote 했는지 여부 저장
     mapping(uint256=>Contents) petitions;  // 청원 저장
     
-    
     modifier votechecker(uint256 _id) {  // 사용자가 이미 투표를 했는지 확인
         bytes32 addrhash = keccak256(toBytes(msg.sender));
         bytes32 idhash = keccak256(abi.encodePacked(_id));
@@ -36,7 +35,7 @@ contract Petition{
     }
     
     modifier isowner() {  // 청원 관리자 확인
-        require(msg.sender == owner);
+        require(msg.sender == owner, "he is not owner");
         _;
     }
     
