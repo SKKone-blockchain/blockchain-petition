@@ -25,7 +25,7 @@ contract Administrator {
     
     modifier isAllowedContract(string memory functionname) {
         emit Alert(msg.sender, functionname);
-        require(whitelist[msg.sender]);
+        require(whitelist[msg.sender], "invalid contract accessed");
         _;
     }
     
