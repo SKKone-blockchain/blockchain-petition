@@ -53,9 +53,8 @@ contract Petition{
     }
     
 
-    function vote(uint256 _id) public getValidation() votechecker(_id) returns(bool) {  // 투표하기, did&중복투표 체크함
+    function vote(uint256 _id) public getValidation() votechecker(_id) {  // 투표하기, did&중복투표 체크함
         petitions[_id].vote += 1;
-        return true;
     }
     
     function write(string memory title, string memory content, string[] memory tags) public getValidation() {  // 청원 작성
@@ -105,7 +104,7 @@ contract Petition{
     }
     
     function getLastIndex() external view returns(uint256) {  // 마지막 index 보기
-        return id;
+        return id-1;
     }
     
     function reply(uint256 _id, string memory url) public isowner()  {  // 청원에 답변한 url 달기

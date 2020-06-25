@@ -49,7 +49,7 @@ contract Administrator {
         verifier[addr].isKorean = false;
     }
     
-    function addReason(string memory reasonStr) public {  // did 제거 이유 추가
+    function addReason(string memory reasonStr) public isOwner("addReason() called"){  // did 제거 이유 추가
         reason.push(reasonStr);
     }
     
