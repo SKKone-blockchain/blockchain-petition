@@ -1,144 +1,71 @@
 [
 	{
-		"inputs": [],
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "url",
+				"type": "string"
+			}
+		],
+		"name": "reply",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "addr",
+				"type": "address"
+			}
+		],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "constructor"
 	},
 	{
-		"anonymous": false,
+		"constant": false,
 		"inputs": [
 			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "addr",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "msg",
-				"type": "string"
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
 			}
 		],
-		"name": "Alert",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "action",
-				"type": "string"
-			}
-		],
-		"name": "OwnerAction",
-		"type": "event"
+		"name": "vote",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
 		"constant": false,
 		"inputs": [
 			{
 				"internalType": "string",
-				"name": "reasonStr",
+				"name": "title",
 				"type": "string"
-			}
-		],
-		"name": "addReason",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "addr",
-				"type": "address"
-			}
-		],
-		"name": "addWhitelist",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "addr",
-				"type": "address"
-			}
-		],
-		"name": "checkValidation",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "addr",
-				"type": "address"
 			},
 			{
-				"internalType": "uint8",
-				"name": "reasonid",
-				"type": "uint8"
-			}
-		],
-		"name": "disenrollment",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
+				"internalType": "string",
+				"name": "content",
+				"type": "string"
+			},
 			{
-				"internalType": "address",
-				"name": "addr",
-				"type": "address"
+				"internalType": "string[]",
+				"name": "tags",
+				"type": "string[]"
 			}
 		],
-		"name": "enrollment",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "addr",
-				"type": "address"
-			}
-		],
-		"name": "removeWhitelist",
+		"name": "write",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -146,13 +73,134 @@
 	},
 	{
 		"constant": true,
-		"inputs": [],
-		"name": "viewReason",
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "param_start",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "param_end",
+				"type": "uint256"
+			}
+		],
+		"name": "getContentsList",
 		"outputs": [
 			{
-				"internalType": "string[]",
+				"components": [
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "content",
+						"type": "string"
+					},
+					{
+						"internalType": "string[]",
+						"name": "tags",
+						"type": "string[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "vote",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "starttime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "reply_url",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isreplied",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct Petition.Contents[]",
 				"name": "",
-				"type": "string[]"
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getLastIndex",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "viewContent",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "content",
+						"type": "string"
+					},
+					{
+						"internalType": "string[]",
+						"name": "tags",
+						"type": "string[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "vote",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "starttime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "reply_url",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isreplied",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct Petition.Contents",
+				"name": "",
+				"type": "tuple"
 			}
 		],
 		"payable": false,
