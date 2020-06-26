@@ -10,12 +10,20 @@
 </head>
 
 <body class="index-page">
-    <header class="top-bar">
-        <!-- title, upload button, admin button -->
+    <header>
+        <div class="top-bar">
+            <div class="title-container">
+                <a href="index.html">국민청원 Powered by Blockchain</a>
+            </div>
+            <div class="redirection-container">
+                <a href="upload.html">UPLOAD</a>
+                <a href="register.html">ADMIN</a>
+            </div>
+        </div>
     </header>
     <div class="container">
         <main class="content">
-            <div>
+            <div class="petition-table-container">
                 <table class="petition-table">
                     <thead>
                         <tr>
@@ -26,10 +34,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- dynamic page loading area start -->
                         <tr class="petition-row">
                             <td class="petition-id">6</td>
                             <td class="petition-title">
-                                <a href="#">스콘 중앙동아리 승격</a>
+                                <a href="#" onclick="">스콘 중앙동아리 승격</a>
                             </td>
                             <td class="petition-voted">42</td>
                             <td class="petition-tags">
@@ -43,7 +52,7 @@
                         <tr class="petition-row">
                             <td class="petition-id">7</td>
                             <td class="petition-title">
-                                <a href="#">Google 폐쇄</a>
+                                <a href="#" onclick="">Google 폐쇄</a>
                             </td>
                             <td class="petition-voted">50,000,000</td>
                             <td class="petition-tags">
@@ -55,7 +64,7 @@
                         <tr class="petition-row">
                             <td class="petition-id">8</td>
                             <td class="petition-title">
-                                <a href="#">나는 경기도 안양의 이준영이다</a>
+                                <a href="#" onclick="">나는 경기도 안양의 이준영이다</a>
                             </td>
                             <td class="petition-voted">0</td>
                             <td class="petition-tags">
@@ -66,11 +75,55 @@
                                 </ul>
                             </td>
                         </tr>
+                        <!-- dynamic page loading area end -->
                     </tbody>
                 </table>
             </div>
-            <div>
-
+            <div class="paging-container">
+                <div class="paging-button-container">
+                    <button type="button" id="nav-prev">prev</button>
+                    <button type="button" id="nav-next">next</button>
+                </div>
+                <div class="seachbox-container">
+                    <input type="text" id="nav-input">
+                    <button type="button" id="nav-search-button">search</button>
+                </div>
+            </div>
+            <div class="petition-container">
+                <article>
+                    <!-- dynamic page loading area start -->
+                    <h1>title</h1>
+                    <div class="petition-info-bar">
+                        <ul>
+                            <li>ID 5</li>
+                            <li>2,000 voted</li>
+                            <li>Created Aug 12, 2012 10:42 AM</li>
+                            <li>
+                                <ul>
+                                    <li>#tag1</li>
+                                    <li>#tag2</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="petition-contents-text">
+                        <p>
+                            내용이 들어갈 자리<br>
+                            아티클 부분은 기본적으로 숨겨져 있으며 다음과 같은 상황일때 보여짐<br>
+                            1. 유저가 테이블 리스트의 글을 클릭한 경우<br>
+                            2. 유저가 GET 패러미터를 가지고 페이지에 접근한 경우<br>
+                            <br>
+                            유저가 다른 글을 클릭한 경우 아티클의 내용이 바뀜
+                        </p>
+                    </div>
+                    <div class="petition-replay">
+                        <a href="#">답변링크</a>
+                    </div>
+                    <div class="petition-vote-container">
+                        <button type="button">VOTE</button>
+                    </div>
+                    <!-- dynamic page loading area end -->
+                </article>
             </div>
             
         </main>
