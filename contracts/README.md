@@ -16,12 +16,92 @@ did를 등록하는 enrollment 기능과 did 등록을 취소하는 disenrollmen
 
 Functions
 <ul>
-    enrollment(address) : did 추가 (관리자만 가능) - 추가 할 id <br/>
-    disenrollment(address , uint8) : did 제거 (관리자만 가능) - 제거 할 id, 제거 이유 <br/>
-    addReason(string) : did 제거 이유 추가 (관리자만 가능) - 제거할 이유 <br/>
-    viewReason() : did 제거 이유 list 보기 <br/>
-    addWhiteList(address) : did 확인할 수 있는 contract address whitelist 추가 (관리자만 가능) - 유효한 contract 주소 <br/>
-    removeWhiteList(address) : did 확인할 수 있는 contract address whitelist 제거 (관리자만 가능) - whiltelist 안의 contract 주소 <br/>
+    <table>
+        <tr> 
+            <th> function name (param) returns(return type) </th>
+            <th> function description </th>
+            <th> parameter description </th>
+            <th> return value descripion</th>
+        </tr>
+        <tr>
+            <td>
+                enrollment (address)
+            </td>
+            <td>
+                did 추가 (관리자만 가능)
+            </td>
+            <td>
+                추가 할 id - wallet address
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                disenrollment (address , uint8)
+            </td>
+            <td>
+                did 제거 (관리자만 가능)
+            </td>
+            <td>
+                제거 할 id, 제거 이유
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                addReason (string)
+            </td>
+            <td>
+                did 제거 이유 추가 (관리자만 가능)
+            </td>
+            <td>
+                did 제거 이유
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                viewReason () returns(string[])
+            </td>
+            <td>
+                did 제거 이유 보기
+            </td>
+            <td>
+            </td>
+            <td>
+                did 제거 이유들
+            </td>
+        </tr>
+        <tr>
+            <td>
+                addWhiteList (address)
+            </td>
+            <td>
+                did 확인할 수 있는 contract address whitelist 추가 (관리자만 가능)
+            </td>
+            <td>
+                유효한 contract 주소
+            </td>
+            <td>
+            </td>
+        </tr>
+            <tr>
+            <td>
+                removeWhiteList (address)
+            </td>
+            <td>
+                did 확인할 수 있는 contract address whitelist 제거 (관리자만 가능)
+            </td>
+            <td>
+                whiltelist 안의 contract 주소
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
 </ul>
 
 <h2> petition_kor.sol - Petition </h2>
@@ -30,11 +110,49 @@ Functions
 
 Functions
 <ul>
-    vote(uint256 _id) : 투표하기 (해당 청원에 투표하지 않은 did 유효한 사람만 가능) - 투표할 청원 id <br/>
-    write(string, string, string[]) : 청원 작성하기 (did 유효한 사람만 가능) - 청원 제목, 청원 내용, 태그들list <br/>
-    viewContent(_id) returns(struct Contents) : 해당 id의 내용 가져오기 - 청원 id - 제목, 내용, 투표수, 태그, 시작 시간, 유효성 여부, 답변 url return <br/>
-    getContentsList(uint, uint ) returns(struct Contents[]) : 지정된 시작 id부터 끝 id까지 불러오기 - 시작 id, 끝 id - 제목, 투표수, 태그 넣은 list return <br/>
-    getLastIndex() : 마지막 청원 index return <br/>
-    reply(uint256, string) : 청원 답변 하기 (청원 관리자만 가능) - 청원 id, 답변 url <br/>
+    <table>
+        <tr>
+            <th> function name (param) returns(return type) </th>
+            <th> function description </th>
+            <th> parameter description </th>
+            <th> return value descripion</th>
+        </tr>
+        <tr>
+            <td> vote (uint256 _id)</td>
+            <td> 투표하기 (해당 청원에 투표하지 않은 did 유효한 사람만 가능)</td>
+            <td> 투표할 청원 id</td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td> write (string, string, string[])</td>
+            <td> 청원 작성하기 (did 유효한 사람만 가능)</td>
+            <td> 청원 제목, 청원 내용, 태그들list</td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td> viewContent (_id) returns(struct Contents) </td>
+            <td> 해당 id의 내용 가져오기</td>
+            <td> 청원 id</td>
+            <td> 제목, 내용, 투표수, 태그, 시작 시간, 유효성 여부, 답변 url return</td>
+        </tr>
+        <tr>
+            <td>getContentsList (uint, uint) returns(struct Contents[])</td>
+            <td> 지정된 시작 id부터 끝 id까지 불러오기</td>
+            <td> 시작 id, 끝 id</td>
+            <td> 제목, 투표수, 태그 넣은 list return</td>
+        </tr>
+        <tr>
+            <td>getLastIndex () returns uint</td>
+            <td> 마지막 청원 index return</td>
+            <td> </td>
+            <td> 마지막 청원 index</td>
+        </tr>
+        <tr>
+            <td>reply (uint256, string) </td>
+            <td> 청원 답변 하기 (청원 관리자만 가능)</td>
+            <td> 청원 id, 답변 url</td>
+            <td> </td>
+        </tr>
+    </table>
 </ul>
 
