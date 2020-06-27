@@ -1,0 +1,33 @@
+
+
+.did-register-contents {
+    text-align: center;
+    margin-bottom: 100px;
+    padding-bottom: 5px;
+    background-color: #ABD1F9;
+    border-radius: 10px;
+}
+
+h1 {
+    background-color: white;
+    border-color: teal;
+}
+
+#submit {
+    align-content: center;
+    width: 100%;
+    /* padding: 10%; */
+}
+
+input {
+    width: 80%;
+}
+
+#input {
+    text-align: start;
+}
+
+table {
+    width: 30%;
+    align-self: center;
+}
