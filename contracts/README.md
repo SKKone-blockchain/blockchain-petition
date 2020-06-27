@@ -24,82 +24,40 @@ Functions
             <th> return value descripion</th>
         </tr>
         <tr>
-            <td>
-                enrollment (address)
-            </td>
-            <td>
-                did 추가 (관리자만 가능)
-            </td>
-            <td>
-                추가 할 id - wallet address
-            </td>
-            <td>
-            </td>
+            <td>enrollment (address)</td>
+            <td>did 추가 (관리자만 가능)</td>
+            <td>추가 할 id - wallet address</td>
+            <td></td>
         </tr>
         <tr>
-            <td>
-                disenrollment (address , uint8)
-            </td>
-            <td>
-                did 제거 (관리자만 가능)
-            </td>
-            <td>
-                제거 할 id, 제거 이유
-            </td>
-            <td>
-            </td>
+            <td>disenrollment (address , uint8)</td>
+            <td>did 제거 (관리자만 가능)</td>
+            <td>제거 할 id, 제거 이유</td>
+            <td></td>
         </tr>
         <tr>
-            <td>
-                addReason (string)
-            </td>
-            <td>
-                did 제거 이유 추가 (관리자만 가능)
-            </td>
-            <td>
-                did 제거 이유
-            </td>
-            <td>
-            </td>
+            <td>addReason (string)</td>
+            <td>did 제거 이유 추가 (관리자만 가능)</td>
+            <td>did 제거 이유</td>
+            <td></td>
         </tr>
         <tr>
-            <td>
-                viewReason () returns(string[])
-            </td>
-            <td>
-                did 제거 이유 보기
-            </td>
-            <td>
-            </td>
-            <td>
-                did 제거 이유들
-            </td>
+            <td>viewReason () returns(string[])</td>
+            <td>did 제거 이유 보기</td>
+            <td></td>
+            <td>did 제거 이유들</td>
         </tr>
         <tr>
-            <td>
-                addWhiteList (address)
-            </td>
-            <td>
-                did 확인할 수 있는 contract address whitelist 추가 (관리자만 가능)
-            </td>
-            <td>
-                유효한 contract 주소
-            </td>
-            <td>
-            </td>
+            <td> addWhiteList (address) </td>
+            <td> did 확인할 수 있는 contract address whitelist 추가 (관리자만 가능) </td>
+            <td> 유효한 contract 주소 </td>
+            <td></td>
         </tr>
             <tr>
-            <td>
-                removeWhiteList (address)
-            </td>
-            <td>
-                did 확인할 수 있는 contract address whitelist 제거 (관리자만 가능)
-            </td>
-            <td>
-                whiltelist 안의 contract 주소
-            </td>
-            <td>
-            </td>
+            <td>removeWhiteList (address)</td>
+            <td>did 확인할 수 있는 contract address whitelist 제거 (관리자만 가능)</td>
+            <td>whiltelist 안의 contract 주소</td>
+            <td></td>
         </tr>
     </table>
 </ul>
