@@ -51,7 +51,7 @@ getPetition(petitionID){
 
 ---------------
 
-Authorize User
+Authorize User - admin.html
 
 register(){
     # register user
@@ -61,10 +61,40 @@ unregister(String cancellationReason){
     
 }
 
-Upload Petition
+---------------
+
+Upload Petition - upload.html
 
 writePetition(
     String title,
     String content,
     String[] tag
     )
+
+---------------
+
+View Petition - viewer.html
+
+getPetition(petitionID){
+    return {
+        title : String,
+        content : String
+        tag : String[]
+        vote : int
+    }
+}
+
+
+votePetition(petitionID){
+
+}
+
+
+---------------
+
+Reply Petition - reply.html
+
+replyPetition(petitionID, url){
+
+}
+
