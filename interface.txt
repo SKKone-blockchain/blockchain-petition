@@ -71,24 +71,6 @@ writePetition(
     String[] tag
     )
 
----------------
-
-View Petition - viewer.html
-
-getPetition(petitionID){
-    return {
-        title : String,
-        content : String
-        tag : String[]
-        vote : int
-    }
-}
-
-
-votePetition(petitionID){
-
-}
-
 
 ---------------
 
