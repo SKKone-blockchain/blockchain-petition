@@ -54,13 +54,16 @@ function get_petition_last_index(){
 
         let last_index = parseInt(response._hex)
 
-        console.log(last_index)
+        console.log('return last_index', last_index)
+        return last_index
     })
 }
 
 function get_petition_list(start_index, end_index){
     petition_contract.functions.getContentsList(start_index, end_index).then((result) =>{
         let response = result[0]
+
+        console.log(response)
 
         let petition_list = []
             // not finished
@@ -72,9 +75,7 @@ async function upload_petition(){
     let content = document.getElementById('content').value
     let tags = document.getElementById('tags').value.split(';')
 
-    console.log(title, content, tags)
-
-    await window.ethereum.enable()
+    
 
     signed_petition_contract.write(title, content, tags).then((result) =>{
         console.log(result)
@@ -84,7 +85,15 @@ async function upload_petition(){
 
 window.onload = async function(){
     // connect to blockchain provider and get contract object
-    get_contracts()
+    await get_contracts()
+
+    // for metamask deprecated feature warning
+    ethereum.autoRefreshOnNetworkChange = false
+    // activate metamask to get account access
+    await window.ethereum.enable()
 
 }
 
+async function get_latest_petition_list(){
+    
+}
