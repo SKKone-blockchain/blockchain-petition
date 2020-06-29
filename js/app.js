@@ -68,7 +68,7 @@ function get_petition_last_index(){
 function get_petition_list(start_index, end_index){
     return new Promise(function(resolve, reject){
         petition_contract.functions.getContentsList(start_index, end_index).then((result) =>{
-            let response = result
+            let response = result[0]
     
             // return array of petitions
             resolve(response)
@@ -99,6 +99,8 @@ window.onload = async function(){
 }
 
 function add_petition_table(title, tags, vote_count, petition_index){
+    console.log(title, tags, vote_count, petition_index)
+
     /*
         Find list table and insert petition to 1st child
         !!NOT!! append child
@@ -106,10 +108,11 @@ function add_petition_table(title, tags, vote_count, petition_index){
 }
 
 function draw_petition_list(petitions, start_index){
-    for (var petition of petitions){
-        var title = petition.title
-        var tags = petition.tags
-        var vote_count = parseInt(petition.vote._hex)
+
+    for (let petition of petitions){
+        let title = petition.title
+        let tags = petition.tags
+        let vote_count = parseInt(petition.vote._hex)
 
         add_petition_table(title, tags, vote_count, start_index++)
     }
