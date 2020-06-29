@@ -1,14 +1,182 @@
 [
 	{
-		"constant": false,
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "",
+				"name": "addr",
 				"type": "address"
 			}
 		],
-		"name": "checkValidation",
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "param_start",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "param_end",
+				"type": "uint256"
+			}
+		],
+		"name": "getContentsList",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "content",
+						"type": "string"
+					},
+					{
+						"internalType": "string[]",
+						"name": "tags",
+						"type": "string[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "vote",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "starttime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "reply_url",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isreplied",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct Petition.Contents[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getLastIndex",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "url",
+				"type": "string"
+			}
+		],
+		"name": "reply",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "viewContent",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "content",
+						"type": "string"
+					},
+					{
+						"internalType": "string[]",
+						"name": "tags",
+						"type": "string[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "vote",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "starttime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "reply_url",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isreplied",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct Petition.Contents",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "vote",
 		"outputs": [
 			{
 				"internalType": "bool",
@@ -16,6 +184,31 @@
 				"type": "bool"
 			}
 		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "title",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "content",
+				"type": "string"
+			},
+			{
+				"internalType": "string[]",
+				"name": "tags",
+				"type": "string[]"
+			}
+		],
+		"name": "write",
+		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
