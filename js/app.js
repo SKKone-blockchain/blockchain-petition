@@ -2,13 +2,15 @@
     Ropsten testing account addr
     0x10a5496B1161dFf2F93eD39b5a71dCDBB7d1f308
 */
-const petition_kor_addr = '0x5De4151886bd7976f7441e5B854CeE1DBdc7eE0F'
+const petition_kor_addr = '0xF51444ddCAa9829C366b6ad66289988bE0Cfa347'
 const did_kor_addr = '0xa3e0592e34786316941bbb642d6624863C6A9e70'
 
 let petition_contract
 let did_contract
 let signed_petition_contract
 let signed_did_contract
+
+let list_length = 5
 
 async function get_contracts(){
     // use metamask provider
@@ -41,7 +43,9 @@ function get_petition(content_id){
         let petition = {
             'title': response.title,
             'content': response.content,
-            'tags': response.tags
+            'tags': response.tags,
+            'is_replied': response.isreplied,
+            'timestamp': parseInt(response.starttime)
         }
         
         console.log(petition)
@@ -49,24 +53,26 @@ function get_petition(content_id){
 }
 
 function get_petition_last_index(){
-    petition_contract.functions.getLastIndex().then((result) =>{
-        let response = result[0]
-
-        let last_index = parseInt(response._hex)
-
-        console.log('return last_index', last_index)
-        return last_index
+    return new Promise(function(resolve, reject) {
+        petition_contract.functions.getLastIndex().then((result) =>{
+            let response = result[0]
+    
+            let last_index = parseInt(response._hex)
+    
+            // return last_index
+            resolve(last_index)
+        })
     })
 }
 
 function get_petition_list(start_index, end_index){
-    petition_contract.functions.getContentsList(start_index, end_index).then((result) =>{
-        let response = result[0]
-
-        console.log(response)
-
-        let petition_list = []
-            // not finished
+    return new Promise(function(resolve, reject){
+        petition_contract.functions.getContentsList(start_index, end_index).then((result) =>{
+            let response = result
+    
+            // return array of petitions
+            resolve(response)
+        })
     })
 }
 
@@ -74,8 +80,6 @@ async function upload_petition(){
     let title = document.getElementById('title').value
     let content = document.getElementById('content').value
     let tags = document.getElementById('tags').value.split(';')
-
-    
 
     signed_petition_contract.write(title, content, tags).then((result) =>{
         console.log(result)
@@ -94,6 +98,38 @@ window.onload = async function(){
 
 }
 
-async function get_latest_petition_list(){
-    
+function add_petition_table(title, tags, vote_count, petition_index){
+    /*
+        Find list table and insert petition to 1st child
+        !!NOT!! append child
+    */
+}
+
+function draw_petition_list(petitions, start_index){
+    for (var petition of petitions){
+        var title = petition.title
+        var tags = petition.tags
+        var vote_count = parseInt(petition.vote._hex)
+
+        add_petition_table(title, tags, vote_count, start_index++)
+    }
+}
+
+async function draw_latest_petition_list(){
+    let last_index = await get_petition_last_index()
+    if (last_index == 0){   // No petitions exist
+        return
+    }
+    let start_index = last_index - list_length
+    if (start_index < 0){
+        start_index = 0
+    }
+
+    let petitions = await get_petition_list(start_index, last_index)
+
+    /*
+        Clear current petition list
+    */
+
+    draw_petition_list(petitions, start_index)
 }
