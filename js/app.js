@@ -27,18 +27,18 @@ function set_innerText(element_id, string){
     element.textContent = string
 }
 
-function get_content(content_id){
+function get_petition(content_id){
     petition_contract.functions.viewContent(content_id).then((result) => {
 
         let response = result[0]
 
-        let content = {
+        let petition = {
             'title': response.title,
             'content': response.content,
             'tags': response.tags
         }
         
-        console.log(content)
+        console.log(petition)
     })
 }
 
