@@ -25,6 +25,7 @@ contract Petition{
     mapping(bytes32=>bool) votecheck;  // 해당 청원에 vote 했는지 여부 저장
     mapping(uint256=>Contents) petitions;  // 청원 저장
     
+    
     modifier votechecker(uint256 _id) {  // 사용자가 이미 투표를 했는지 확인
         bytes32 addrhash = keccak256(toBytes(msg.sender));
         bytes32 idhash = keccak256(abi.encodePacked(_id));
@@ -35,7 +36,7 @@ contract Petition{
     }
     
     modifier isowner() {  // 청원 관리자 확인
-        require(msg.sender == owner, "he is not owner");
+        require(msg.sender == owner);
         _;
     }
     
@@ -52,8 +53,9 @@ contract Petition{
     }
     
 
-    function vote(uint256 _id) public getValidation() votechecker(_id) {  // 투표하기, did&중복투표 체크함
+    function vote(uint256 _id) public getValidation() votechecker(_id) returns(bool) {  // 투표하기, did&중복투표 체크함
         petitions[_id].vote += 1;
+        return true;
     }
     
     function write(string memory title, string memory content, string[] memory tags) public getValidation() {  // 청원 작성
@@ -78,7 +80,11 @@ contract Petition{
     function getContentsList(uint param_start, uint param_end) external view returns(Contents[] memory) {  // 청원 list 불러오기
         uint _start = param_start;
         uint _end = param_end;
-
+        
+        if(_end > id) {
+            _end = id;
+        }
+        
         if(_start > _end) {  // 순서 바뀌었을 때
             uint tmp = _start;
             _start = _end;
@@ -93,7 +99,7 @@ contract Petition{
             _start = 0;
         }
         
-        Contents[] memory list = new Contents[](_end-_start);
+        Contents[] memory list = new Contents[](_end-_start+1);
         for(uint i = _start; i < _end+1; i++){
             list[i].title = petitions[i].title;
             list[i].vote = petitions[i].vote;
@@ -103,7 +109,7 @@ contract Petition{
     }
     
     function getLastIndex() external view returns(uint256) {  // 마지막 index 보기
-        return id-1;
+        return id;
     }
     
     function reply(uint256 _id, string memory url) public isowner()  {  // 청원에 답변한 url 달기
