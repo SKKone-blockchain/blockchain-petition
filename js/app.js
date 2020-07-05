@@ -136,3 +136,62 @@ async function draw_latest_petition_list(){
 
     draw_petition_list(petitions, start_index)
 }
+
+
+function invalid_addr_alert(){
+    alert('Invalid address input')
+}
+
+
+function register_did(){
+    let addr = document.getElementById('did-register-value').value
+
+    if (!isAddress(addr)){
+        invalid_addr_alert()
+        return
+    }
+
+    signed_did_contract.enrollment(addr).then((result) => {
+        console.log(result)
+    })
+}
+
+function unregister_did(){
+    let addr = document.getElementById('did-unregister-addr-value').value
+    let reason_id = parseInt(document.getElementById('did-unregister-reason-value').value)
+
+    if (!isAddress(addr)){
+        invalid_addr_alert()
+        return
+    }
+
+    signed_did_contract.disenrollment(addr, reason_id).then((result) => {
+        console.log(result)
+    })
+}
+
+function register_whitelist(){
+    let addr = document.getElementById('whitelist-register-value').value
+
+    if (!isAddress(addr)){
+        invalid_addr_alert()
+        return
+    }
+
+    signed_did_contract.addWhitelist(addr).then((result) => {
+        console.log(result)
+    })
+}
+
+function unregister_whitelist(){
+    let addr = document.getElementById('whitelist-unregister-value').value
+
+    if (!isAddress(addr)){
+        invalid_addr_alert()
+        return
+    }
+
+    signed_did_contract.removeWhitelist(addr).then((result) => {
+        console.log(result)
+    })
+}
